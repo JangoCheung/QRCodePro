@@ -1,0 +1,18 @@
+{
+   "background": {
+      "scripts": []
+   },
+   "browser_action": {
+      "default_icon": "/icon_128.png",
+      "default_popup": "/popup.html",
+      "default_title": ""
+   },
+   "description": "QRCodePro",
+   "icons": {
+      "128": "/icon_128.png"
+   },
+   "manifest_version": 2,
+   "name": "QRCodePro",
+   "permissions": [ "storage", "clipboardWrite", "tabs" ],
+   "version": "2.0.0"
+}

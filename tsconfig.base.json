@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "allowJs": false,
+    "alwaysStrict": true,
+    "importHelpers": true,
+    "lib": ["es5", "es6", "es7", "dom"],
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "noImplicitThis": true,
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "declaration": false,
+    "declarationMap": false,
+    "target": "es2015",
+    "resolveJsonModule": true,
+    "paths": {
+    }
+  }
+}

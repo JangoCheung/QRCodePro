@@ -1,0 +1,10 @@
+node_modules
+yarn-error.log
+dist
+out
+.DS_Store
+dist
+package
+package.crx
+package.pem
+package.zip

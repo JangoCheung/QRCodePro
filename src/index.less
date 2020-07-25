@@ -1,0 +1,52 @@
+html {
+  padding: 20px;
+  width: auto;
+  overflow: auto;
+}
+
+body {
+  height: 500px;
+}
+
+#app {
+  width: 500px;
+}
+
+.qrcode-wrap {
+  height: 100%;
+}
+
+.qrcode {
+  width: 200px;
+  height: 200px;
+}
+
+.popover-qrcode {
+  width: 200px;
+  height: 200px;
+}
+
+.list-item {
+  align-items: center;
+  display: flex;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  .list-item-content {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex: 1;
+  }
+
+  .list-item-action > li {
+    display: inline-block;
+    color: #00000073;
+    cursor: pointer;
+    padding: 0 8px;
+    position: relative;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+  }
+}
