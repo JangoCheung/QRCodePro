@@ -1,5 +1,7 @@
 # Chrome Extension QRCodePro
 
-![QRCodePro](./images/1.jpg)
+QRCodePro help you create QRCode easily and decode you QRCode Image to URL easily.
 
-Generate QRCode as easy as possible and save it in you local chrome storage.
+![QRCodePro](./images/Generate_QRCode.jpg)
+![QRCodePro](./images/Decode_QRCode.jpg)
+![QRCodePro](./images/Decode_QRCode_2.jpg)
