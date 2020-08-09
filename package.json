@@ -37,6 +37,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "qrcode-decoder": "^0.1.2",
     "tslib": "^1.11.1"
   }
 }

@@ -1,13 +1,10 @@
 {
-   "background": {
-      "scripts": []
-   },
    "browser_action": {
       "default_icon": "icon_128.png",
       "default_popup": "popup.html",
       "default_title": ""
    },
-   "description": "QRCodePro",
+   "description": "QRCodePro help you create QRCode easily and decode you QRCode Image to URL easily.",
    "icons": {
       "128": "icon_128.png",
       "48": "icon_128.png",
@@ -15,6 +12,6 @@
    },
    "manifest_version": 2,
    "name": "QRCodePro",
-   "permissions": [ "storage", "clipboardWrite", "tabs" ],
-   "version": "2.0.1"
+   "permissions": [ "storage", "clipboardWrite", "clipboardRead", "tabs" ],
+   "version": "2.0.2"
 }

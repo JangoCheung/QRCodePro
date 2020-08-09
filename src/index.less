@@ -1,5 +1,6 @@
 html {
   padding: 20px;
+  padding-top: 0px;
   width: auto;
   overflow: auto;
 }
@@ -48,5 +49,33 @@ body {
     font-size: 14px;
     line-height: 22px;
     text-align: center;
+  }
+}
+
+.image-preview {
+  border: 1px solid #ccc;
+  height: 200px;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 200px;
+  position: relative;
+
+  .qrcode-preview {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .drop-image {
+    position: absolute;
+    z-index: 100;
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .save-image {
+    right: 50px;
   }
 }
