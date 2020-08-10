@@ -305,7 +305,7 @@ class App extends Component {
               <div style={{ marginTop: 10}}>
                 <h3>Decode Info</h3>
                 <Input.TextArea 
-                  rows={2}
+                  rows={4}
                   style={{resize: 'none'}}
                   value={decodeUrl}
                 />
