@@ -49,6 +49,8 @@ function createImage(src) {
 }
 
 class App extends Component {
+  currentSelectTab = '';
+
   state = {
     title: '',
     content: '',
@@ -64,6 +66,10 @@ class App extends Component {
 
   componentWillMount(){
     document.addEventListener('paste', (e) => {
+      if (this.currentSelectTab !== 'deconde') {
+        return
+      }
+
       // @ts-ignore
       const clipdata = e.clipboardData || window.clipboardData;
 
@@ -157,6 +163,10 @@ class App extends Component {
     }, () => this.sync());
   }
 
+  onTabsChange = (value) => {
+    this.currentSelectTab = value;
+  }
+
   async clipboardWriteText(text) {
     try {
       await navigator.clipboard.writeText(text);
@@ -248,7 +258,7 @@ class App extends Component {
     const { qrcodePreviewUrl, decodeUrl, decodeSuccess } = this.state;
 
     return [
-      <Tabs animated={false}>
+      <Tabs animated={false} onChange={this.onTabsChange}>
         <TabPane tab="Generate QRCode" key="encode">
           <div className="qrcode-wrap">
             <Row>
