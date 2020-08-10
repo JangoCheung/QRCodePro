@@ -1,11 +1,11 @@
 {
   "name": "QRCodePro",
-  "version": "2.0.0",
+  "version": "2.0.3",
   "description": "QRCodePro",
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack -p",
-    "pack": "npm run build && rm -rf package && mkdir package && cp dist/* package && cp manifest.json package && cp public/popup.html package && cp icon_128.png package"
+    "pack": "npm run build && rm -rf package && mkdir package && cp -r public package && cp dist/* package/public && cp manifest.json package && cp icon_128.png package"
   },
   "keywords": [],
   "author": "",

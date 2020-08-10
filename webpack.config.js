@@ -51,10 +51,13 @@ const webConfig = {
     new Ex('./dist/[name].css'),
   ],
   externals: {
-    // "antd": "antd",
-    // "react": "React",
-    // "react-dom": "ReactDOM",
-    // "moment": "moment"
+    "antd": "antd",
+    "react": "React",
+    "react-dom": "ReactDOM",
+    "moment": "moment",
+    "@ant-design/icons": "icon",
+    "qrcode": "QRCode",
+    "qrcode-decoder": "QrcodeDecoder"
   }
 };
 

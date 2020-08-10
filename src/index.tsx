@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 
 import { Button, Row, Col, Input, List, Popover, message, Tabs } from 'antd';
-import { QrcodeOutlined, LinkOutlined, EditOutlined, DeleteOutlined, SaveOutlined } from '@ant-design/icons';
+import { QrcodeOutlined, LinkOutlined, EditOutlined, DeleteOutlined, SaveOutlined, GithubOutlined } from '@ant-design/icons';
 import QRCode from 'qrcode';
 import QrcodeDecoder from 'qrcode-decoder';
 import { get } from 'lodash';
@@ -247,7 +247,7 @@ class App extends Component {
   render() {
     const { qrcodePreviewUrl, decodeUrl, decodeSuccess } = this.state;
 
-    return (
+    return [
       <Tabs animated={false}>
         <TabPane tab="Generate QRCode" key="encode">
           <div className="qrcode-wrap">
@@ -309,8 +309,9 @@ class App extends Component {
             }
           </div>
         </TabPane>
-      </Tabs>
-    )
+      </Tabs>,
+      <img src="./images/Github.png" className="github-icon" onClick={e => window.open('https://github.com/cowboykx/QRCodePro')}/>
+    ]
   }
 
   // componentWillUnmount(){}
