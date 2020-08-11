@@ -55,7 +55,7 @@ const webConfig = {
     "react": "React",
     "react-dom": "ReactDOM",
     "moment": "moment",
-    "@ant-design/icons": "icon",
+    "@ant-design/icons": "icons",
     "qrcode": "QRCode",
     "qrcode-decoder": "QrcodeDecoder"
   }
