@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 
 import { Button, Row, Col, Input, List, Popover, message, Tabs } from 'antd';
-import { QrcodeOutlined, LinkOutlined, EditOutlined, DeleteOutlined, SaveOutlined, GithubOutlined } from '@ant-design/icons';
+import { QrcodeOutlined, LinkOutlined, EditOutlined, DeleteOutlined, SaveOutlined, GithubOutlined, CopyOutlined } from '@ant-design/icons';
 import QRCode from 'qrcode';
 import QrcodeDecoder from 'qrcode-decoder';
 import { get } from 'lodash';
@@ -231,7 +231,7 @@ class App extends Component {
             dataSource={this.state.list}
             renderItem={item => (
               <List.Item className="list-item">
-                <a className="list-item-content" href="javascript:;" target="_blank" onClick={e => this.onCopy(item)}>{item.title}</a>
+                <a className="list-item-content" href="javascript:;" target="_blank" onClick={e => window.open(item.content)}>{item.title}</a>
                 <ul className="list-item-action">
                   <li>
                     <Popover
@@ -243,7 +243,7 @@ class App extends Component {
                     </Popover>
                   </li>
                   <li><LinkOutlined onClick={e => window.open(item.content)}/></li>
-                  {/* <li><EditOutlined onClick={e => this.onEdit(item)}/></li> */}
+                  <li><CopyOutlined onClick={e => this.onCopy(item)}/></li>
                   <li><DeleteOutlined onClick={e => this.onDelete(item.id)}/></li>
                 </ul>
               </List.Item>

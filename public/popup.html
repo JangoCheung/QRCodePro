@@ -7,6 +7,14 @@
   <link rel="stylesheet" type="text/css" href="./libs/antd.css">
   <link rel="stylesheet" type="text/css" href="./index.css">
   <style>
+    .lds-default-wrap {
+      width: 100%;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .lds-default {
       display: inline-block;
       position: relative;
@@ -113,19 +121,21 @@
 
 <body>
   <div id="app">
-    <div class="lds-default">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+    <div class="lds-default-wrap">
+      <div class="lds-default">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   </div>
   <script src="./loader.js"></script>
