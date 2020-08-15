@@ -6,48 +6,15 @@ import { QrcodeOutlined, LinkOutlined, EditOutlined, DeleteOutlined, SaveOutline
 import QRCode from 'qrcode';
 import QrcodeDecoder from 'qrcode-decoder';
 import { get } from 'lodash';
+import Storage from './store';
+import { TItem, TList, STORAGE_KEY } from './constants';
+import { createImage, getI18N } from './tools';
 
 import 'antd/dist/antd.css';
 import './index.less';
 
-type TItem = {
-  id: string;
-  title: string;
-  content: string;
-};
-
-type TList = Array<TItem>
-
-const STORAGE_KEY = 'qrcodepro';
 const { TabPane } = Tabs;
 const decoder = new QrcodeDecoder();
-
-class Storage {
-  static get(key) {
-    return new Promise((resolve, reject) => {
-      // @ts-ignore
-      chrome.storage.sync.get(key, (res) => resolve(res[key]));
-    });
-  }
-
-  static set(key, value) {
-    return new Promise((resolve, reject) => {
-      // @ts-ignore
-      chrome.storage.sync.set({ [key]: value }, () => resolve())
-    });
-  }
-}
-
-function createImage(src) {
-  return new Promise((resolve, reject) => {
-    const image = new Image();
-
-    image.src = src;
-    image.addEventListener('load', (e) => resolve(image));
-    image.addEventListener('error', (err) =>  reject(err));
-  })
-}
-
 class App extends Component {
   currentSelectTab = '';
 
@@ -88,7 +55,7 @@ class App extends Component {
         return;
       }
 
-      message.error('Clipboard has no Image Data.')
+      message.error(getI18N('Clipboard_has_no_Image_Data'))
     });
   }
 
@@ -141,12 +108,12 @@ class App extends Component {
 
   onSave = () => {
     if (!this.state.title) {
-      message.error('Title Should Not Be Empty.')
+      message.error(getI18N('Empty_Title_Alert'))
       return;
     }
 
     if (!this.state.content) {
-      message.error('Link Should Not Be Empty.')
+      message.error(getI18N('Empty_Link_Alert'))
       return;
     }
 
@@ -170,9 +137,9 @@ class App extends Component {
   async clipboardWriteText(text) {
     try {
       await navigator.clipboard.writeText(text);
-      message.success('Copy Success');
+      message.success(getI18N('Copy_Success'));
     } catch(err) {
-      message.error('Copy Error,' + err.message);
+      message.error(getI18N('Copy_Error') + err.message);
     }
   }
 
@@ -190,13 +157,13 @@ class App extends Component {
       const res = await decoder.decodeFromImage(image);
 
       this.setState({ 
-        decodeUrl: res.data ? res.data : '无法解析图片中的二维码',
-        decodeSuccess: res.data,
+        decodeUrl: res.data ? res.data : getI18N('Unable_Decode_QRCode'),
+        decodeSuccess: res.data && res.data.length > 0,
       });
     } catch(err) {
       this.setState({
         decodeSuccess: false,
-        decodeUrl: '无法解析图片中的二维码'
+        decodeUrl: getI18N('Unable_Decode_QRCode')
       })
     }
   }
@@ -206,10 +173,16 @@ class App extends Component {
   }
 
   onSaveDecodeURL = () => {
-    if (this.state.decodeUrl !== '' && this.state.decodeUrl !== '无法解析图片中的二维码') {
+    if (this.state.decodeSuccess) {
       this.setState({
-        list: [ { id: Date.now(), title: this.state.decodeUrl, content: this.state.decodeUrl }, ...this.state.list ]
-      }, () => this.sync());
+        list: [
+          {
+            id: Date.now(),
+            title: this.state.decodeUrl,
+            content: this.state.decodeUrl
+          },
+          ...this.state.list,
+      ]}, () => this.sync());
     }
   }
 
@@ -220,7 +193,7 @@ class App extends Component {
 
   renderList() {
     return [
-      <h3 style={{marginTop: 10}}>Local Storage History</h3>,
+    <h3 style={{marginTop: 10}}>{getI18N('Local_Storage_History')}</h3>,
       <Row gutter={[0, 15]}>
         <Col span={24}>
           <List
@@ -259,7 +232,7 @@ class App extends Component {
 
     return [
       <Tabs animated={false} onChange={this.onTabsChange}>
-        <TabPane tab="Generate QRCode" key="encode">
+        <TabPane tab={getI18N('Generate_QRCode')} key="encode">
           <div className="qrcode-wrap">
             <Row>
               <Col span={10}>
@@ -277,7 +250,7 @@ class App extends Component {
                 />
                 <Row style={{marginTop: 10}} gutter={[10, 0]}>
                   <Col span={24}>
-                    <Button style={{width: '100%'}} type="primary" onClick={this.onSave}>Save</Button>
+                    <Button style={{width: '100%'}} type="primary" onClick={this.onSave}>{getI18N('Save')}</Button>
                   </Col>
                 </Row>
               </Col>
@@ -285,7 +258,7 @@ class App extends Component {
             {this.renderList()}
           </div>
         </TabPane>
-        <TabPane tab="Decode QRCode" key="deconde">
+        <TabPane tab={getI18N('Decode_QRCode')} key="deconde">
           <div className="image-preview">
             {
               qrcodePreviewUrl && [
@@ -296,14 +269,14 @@ class App extends Component {
             }
             {
               !qrcodePreviewUrl && (
-                <p><Button size="small" type="primary" onClick={this.onImportImageFromClipboard}>点击这里</Button> , 从粘贴板里获取二维码图片</p>
+                <p><Button size="small" type="primary" onClick={this.onImportImageFromClipboard}>{getI18N('Click_Here')}</Button> , {getI18N('Read_QRCode')}</p>
               )
             }
           </div>
           {
             qrcodePreviewUrl && (
               <div style={{ marginTop: 10}}>
-                <h3>Decode Info</h3>
+                <h3>{getI18N('Decode_Info')}</h3>
                 <Input.TextArea 
                   rows={3}
                   style={{resize: 'none'}}

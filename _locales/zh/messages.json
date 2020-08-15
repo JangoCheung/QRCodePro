@@ -1,0 +1,41 @@
+{
+  "Generate_QRCode": {
+    "message": "生成二维码"
+  },
+  "Decode_QRCode": {
+    "message": "二维码解码"
+  },
+  "Save": {
+    "message": "保存到本地"
+  },
+  "Local_Storage_History": {
+    "message": "本地历史记录"
+  },
+  "Decode_Info": {
+    "message": "解码信息"
+  },
+  "Click_Here": {
+    "message": "点击这里"
+  },
+  "Read_QRCode": {
+    "message": "从粘贴板里获取二维码图片"
+  },
+  "Empty_Title_Alert": {
+    "message": "标题不能为空"
+  },
+  "Empty_Link_Alert": {
+    "message": "链接不能为空"
+  },
+  "Unable_Decode_QRCode": {
+    "message": "无法解析图片中的二维码"
+  },
+  "Clipboard_has_no_Image_Data": {
+    "message": "剪贴板里没有图片"
+  },
+  "Copy_Success": {
+    "message": "复制成功"
+  },
+  "Copy_Error": {
+    "message": "复制失败"
+  }
+}

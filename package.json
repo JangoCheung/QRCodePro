@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack -p",
-    "pack": "npm run build && rm -rf package && mkdir package && cp -r public package && cp dist/* package/public && cp manifest.json package && cp icon_128.png package"
+    "pack": "npm run build && rm -rf package && mkdir package && cp -r public package && cp dist/* package/public && cp manifest.json package && cp icon_128.png package && cp -r _locales package"
   },
   "keywords": [],
   "author": "",

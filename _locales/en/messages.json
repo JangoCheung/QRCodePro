@@ -1,0 +1,41 @@
+{
+  "Generate_QRCode": {
+    "message": "Generate QRCode"
+  },
+  "Decode_QRCode": {
+    "message": "Decode QRCode"
+  },
+  "Save": {
+    "message": "Save Into Local Cache"
+  },
+  "Local_Storage_History": {
+    "message": "Local Storage History"
+  },
+  "Decode_Info": {
+    "message": "Decode Info"
+  },
+  "Click_Here": {
+    "message": "Click Here"
+  },
+  "Read_QRCode": {
+    "message": "Decode QRCode from Clipboard Image."
+  },
+  "Empty_Title_Alert": {
+    "message": "Title should not be empty."
+  },
+  "Empty_Link_Alert": {
+    "message": "Link should not be empty."
+  },
+  "Unable_Decode_QRCode": {
+    "message": "Unable decode QRCode message from this image."
+  },
+  "Clipboard_has_no_Image_Data": {
+    "message": "Clipboard has no image data."
+  },
+  "Copy_Success": {
+    "message": "Copy Success"
+  },
+  "Copy_Error": {
+    "message": "Copy Error"
+  }
+}

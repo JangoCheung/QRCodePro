@@ -6,11 +6,11 @@ QRCodePro help you create QRCode easily and decode you QRCode Image to URL easil
 
 ## Generate QRCode
 
-![QRCodePro](./images/Generate_QRCode.jpg)
+![QRCodePro](./images/en/Generate_QRCode.jpg)
 
 ## Decode QRCode
 
 From you clipboard image file
 
-![QRCodePro](./images/Decode_QRCode.jpg)
-![QRCodePro](./images/Decode_QRCode_2.jpg)
+![QRCodePro](./images/en/Decode_QRCode.jpg)
+![QRCodePro](./images/en/Decode_QRCode_2.jpg)
