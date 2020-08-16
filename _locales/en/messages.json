@@ -5,6 +5,12 @@
   "Decode_QRCode": {
     "message": "Decode QRCode"
   },
+  "Title_Placeholder": {
+    "message": "Title"
+  },
+  "Link_Placeholder": {
+    "message": "Link"
+  },
   "Save": {
     "message": "Save Into Local Cache"
   },

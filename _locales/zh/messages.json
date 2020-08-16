@@ -5,8 +5,14 @@
   "Decode_QRCode": {
     "message": "二维码解码"
   },
+  "Title_Placeholder": {
+    "message": "标题"
+  },
+  "Link_Placeholder": {
+    "message": "链接"
+  },
   "Save": {
-    "message": "保存到本地"
+    "message": "保存到本地历史记录中"
   },
   "Local_Storage_History": {
     "message": "本地历史记录"

@@ -193,7 +193,7 @@ class App extends Component {
 
   renderList() {
     return [
-    <h3 style={{marginTop: 10}}>{getI18N('Local_Storage_History')}</h3>,
+      <h3 style={{marginTop: 10}}>{getI18N('Local_Storage_History')}</h3>,
       <Row gutter={[0, 15]}>
         <Col span={24}>
           <List
@@ -204,7 +204,7 @@ class App extends Component {
             dataSource={this.state.list}
             renderItem={item => (
               <List.Item className="list-item">
-                <a className="list-item-content" href="javascript:;" target="_blank" onClick={e => window.open(item.content)}>{item.title}</a>
+                <a className="list-item-content" href={item.content} target="_blank">{item.title}</a>
                 <ul className="list-item-action">
                   <li>
                     <Popover
@@ -239,8 +239,9 @@ class App extends Component {
                 <img className="qrcode" ref="qrcode" />
               </Col>
               <Col span={14}>
-                <Input placeholder="Name" value={this.state.title} onChange={e => this.setState({title: e.target.value})}/>
+                <Input placeholder={getI18N('Title_Placeholder')} value={this.state.title} onChange={e => this.setState({title: e.target.value})}/>
                 <Input.TextArea 
+                  placeholder={getI18N('Link_Placeholder')}
                   rows={5}
                   style={{resize: 'none', marginTop: 10}}
                   value={this.state.content}
