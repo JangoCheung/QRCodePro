@@ -10,7 +10,6 @@ import Storage from './store';
 import { TItem, TList, STORAGE_KEY } from './constants';
 import { createImage, getI18N } from './tools';
 
-import 'antd/dist/antd.css';
 import './index.less';
 
 const { TabPane } = Tabs;
