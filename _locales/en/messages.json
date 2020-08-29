@@ -43,5 +43,11 @@
   },
   "Copy_Error": {
     "message": "Copy Error"
+  },
+  "Edit": {
+    "message": "Edit"
+  },
+  "Update": {
+    "message": "Update"
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 
-import { Button, Row, Col, Input, List, Popover, message, Tabs } from 'antd';
+import { Button, Row, Col, Input, List, Popover, message, Tabs, Drawer } from 'antd';
 import { QrcodeOutlined, LinkOutlined, EditOutlined, DeleteOutlined, SaveOutlined, GithubOutlined, CopyOutlined } from '@ant-design/icons';
 import QRCode from 'qrcode';
 import QrcodeDecoder from 'qrcode-decoder';
@@ -16,6 +16,7 @@ const { TabPane } = Tabs;
 const decoder = new QrcodeDecoder();
 class App extends Component {
   currentSelectTab = '';
+  editId = '';
 
   state = {
     title: '',
@@ -24,6 +25,9 @@ class App extends Component {
     qrcodePreviewUrl: '',
     decodeUrl: '',
     decodeSuccess: false,
+    editorVisible: false,
+    editTitle: '',
+    editContent: ''
   }
 
   constructor(props) {
@@ -146,6 +150,41 @@ class App extends Component {
     this.clipboardWriteText(item.content);
   }
 
+  onEdit = (item) => {
+    this.editId = item.id;
+    this.setState({ editorVisible: true, editTitle: item.title, editContent: item.content });
+  }
+
+  onEditClose = () => {
+    this.editId = '';
+    this.setState({ editorVisible: false });
+  }
+
+  onSaveEdit = () => {
+    if (!this.state.editTitle) {
+      message.error(getI18N('Empty_Title_Alert'))
+      return;
+    }
+
+    if (!this.state.editContent) {
+      message.error(getI18N('Empty_Link_Alert'))
+      return;
+    }
+
+    const list = this.state.list.map((item) => {
+      if (item.id === this.editId) {
+        item.title = this.state.editTitle;
+        item.content = this.state.editContent;
+        this.editId = '';
+        return item;
+      }
+
+      return item;
+    });
+
+    this.setState({ list, editorVisible: false }, () => this.sync());
+  }
+
   sync() {
     Storage.set(STORAGE_KEY, this.state.list);
   }
@@ -214,7 +253,7 @@ class App extends Component {
                       <QrcodeOutlined />
                     </Popover>
                   </li>
-                  <li><LinkOutlined onClick={e => window.open(item.content)}/></li>
+                  <li><EditOutlined onClick={e => this.onEdit(item)}/></li>
                   <li><CopyOutlined onClick={e => this.onCopy(item)}/></li>
                   <li><DeleteOutlined onClick={e => this.onDelete(item.id)}/></li>
                 </ul>
@@ -227,7 +266,7 @@ class App extends Component {
   }
 
   render() {
-    const { qrcodePreviewUrl, decodeUrl, decodeSuccess } = this.state;
+    const { qrcodePreviewUrl, decodeUrl, decodeSuccess, editorVisible } = this.state;
 
     return [
       <Tabs animated={false} onChange={this.onTabsChange}>
@@ -293,6 +332,25 @@ class App extends Component {
           </div>
         </TabPane>
       </Tabs>,
+      <Drawer width="75%" title={getI18N('Edit')} placement="right" visible={editorVisible} onClose={this.onEditClose}>
+        <Input
+          placeholder={getI18N('Title_Placeholder')}
+          value={this.state.editTitle}
+          onChange={e => this.setState({editTitle: e.target.value})}
+        />
+        <Input.TextArea 
+          placeholder={getI18N('Link_Placeholder')}
+          rows={10}
+          style={{resize: 'none', marginTop: 10}}
+          value={this.state.editContent}
+          onChange={e => this.setState({editContent: e.target.value})}
+        />
+        <Row style={{marginTop: 10}} gutter={[10, 0]}>
+          <Col span={24}>
+            <Button style={{width: '100%'}} type="primary" onClick={this.onSaveEdit}>{getI18N('Update')}</Button>
+          </Col>
+        </Row>
+      </Drawer>,
       <img src="./images/Github.png" className="github-icon" onClick={e => window.open('https://github.com/cowboykx/QRCodePro')}/>
     ]
   }

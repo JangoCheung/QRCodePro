@@ -43,5 +43,11 @@
   },
   "Copy_Error": {
     "message": "复制失败"
+  },
+  "Edit": {
+    "message": "编辑"
+  },
+  "Update": {
+    "message": "更新"
   }
 }
