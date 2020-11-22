@@ -18,7 +18,8 @@ const baseConfig = {
 const webConfig = {
   entry: {
     'index': './src/index.tsx',
-    // 'background': './src/background.ts',
+    'background': './src/background.ts',
+    'content_script': './src/content_script.ts'
   },
   output: {
     filename: './dist/[name].js',

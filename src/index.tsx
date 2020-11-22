@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 
 import { Button, Row, Col, Input, List, Popover, message, Tabs, Drawer } from 'antd';
-import { QrcodeOutlined, LinkOutlined, EditOutlined, DeleteOutlined, SaveOutlined, GithubOutlined, CopyOutlined } from '@ant-design/icons';
+import { QrcodeOutlined, LinkOutlined, EditOutlined, DownloadOutlined, DeleteOutlined, SaveOutlined, GithubOutlined, CopyOutlined } from '@ant-design/icons';
 import QRCode from 'qrcode';
 import QrcodeDecoder from 'qrcode-decoder';
 import { get } from 'lodash';
 import Storage from './store';
 import { TItem, TList, STORAGE_KEY } from './constants';
-import { createImage, getI18N } from './tools';
+import { createImage, getI18N, download } from './tools';
 
 import './index.less';
 
@@ -125,6 +125,24 @@ class App extends Component {
         list: [ { id: Date.now(), title: this.state.title, content: this.state.content }, ...this.state.list ]
       }, () => this.sync());
     }
+  }
+
+  onSaveLocal = async () => {
+    if (!this.state.content) {
+      message.error(getI18N('Empty_Link_Alert'))
+      return;
+    }
+
+    await this.download(this.state.content, this.state.title);
+  }
+
+  async download(content, name) {
+    const qrcode = await QRCode.toDataURL(content, {
+      width: 200,
+      height: 200,
+      margin: 0
+    })
+    download(qrcode, name);
   }
 
   onDelete = (id) => {
@@ -253,6 +271,7 @@ class App extends Component {
                       <QrcodeOutlined />
                     </Popover>
                   </li>
+                  <li><DownloadOutlined onClick={e => this.download(item.content, item.title)}/></li>
                   <li><EditOutlined onClick={e => this.onEdit(item)}/></li>
                   <li><CopyOutlined onClick={e => this.onCopy(item)}/></li>
                   <li><DeleteOutlined onClick={e => this.onDelete(item.id)}/></li>
@@ -288,7 +307,10 @@ class App extends Component {
                   }}
                 />
                 <Row style={{marginTop: 10}} gutter={[10, 0]}>
-                  <Col span={24}>
+                  <Col span={10}>
+                    <Button style={{width: '100%'}} type="primary" onClick={this.onSaveLocal}>{getI18N('Save_Local')}</Button>
+                  </Col>
+                  <Col span={14}>
                     <Button style={{width: '100%'}} type="primary" onClick={this.onSave}>{getI18N('Save')}</Button>
                   </Col>
                 </Row>

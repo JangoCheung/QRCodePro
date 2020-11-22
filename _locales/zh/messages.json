@@ -12,7 +12,10 @@
     "message": "链接"
   },
   "Save": {
-    "message": "保存到本地历史记录中"
+    "message": "保存历史记录中"
+  },
+  "Save_Local": {
+    "message": "下载二维码"
   },
   "Local_Storage_History": {
     "message": "本地历史记录"

@@ -10,9 +10,18 @@
       "48": "icon_128.png",
       "16": "icon_128.png"
    },
+   "background": {
+      "scripts": ["public/background.js"]
+   },
+   "content_scripts": [
+      {
+         "matches": [ "<all_urls>" ],
+         "js": ["public/libs/qrcode.min.js", "public/content_script.js"]
+      }
+   ],
    "default_locale": "en",
    "manifest_version": 2,
    "name": "QRCodePro",
-   "permissions": [ "storage", "clipboardWrite", "clipboardRead", "tabs" ],
-   "version": "2.0.8"
+   "permissions": [ "storage", "clipboardWrite", "clipboardRead", "tabs", "contextMenus" ],
+   "version": "2.1.0"
 }
