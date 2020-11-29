@@ -249,7 +249,7 @@ class App extends Component {
 
   renderList() {
     return [
-      <h3 style={{marginTop: 10}}>{getI18N('Local_Storage_History')}</h3>,
+      <h4 style={{marginTop: 10}}>{getI18N('Local_Storage_History')}</h4>,
       <Row gutter={[0, 15]}>
         <Col span={24}>
           <List
@@ -258,6 +258,7 @@ class App extends Component {
             footer={null}
             bordered
             dataSource={this.state.list}
+            style={{height: '190px', overflow: 'auto'}}
             renderItem={item => (
               <List.Item className="list-item">
                 <a className="list-item-content" href={item.content} target="_blank">{item.title}</a>
@@ -288,12 +289,13 @@ class App extends Component {
     const { qrcodePreviewUrl, decodeUrl, decodeSuccess, editorVisible } = this.state;
 
     return [
-      <Tabs animated={false} onChange={this.onTabsChange}>
+      <Tabs animated={false} onChange={this.onTabsChange} style={{height: '100%'}} size="small">
         <TabPane tab={getI18N('Generate_QRCode')} key="encode">
           <div className="qrcode-wrap">
             <Row>
-              <Col span={10}>
+              <Col span={10} className="qrcode-img-wrap">
                 <img className="qrcode" ref="qrcode" />
+                <Button type="primary" icon="download" onClick={this.onSaveLocal} className="download-btn" />
               </Col>
               <Col span={14}>
                 <Input placeholder={getI18N('Title_Placeholder')} value={this.state.title} onChange={e => this.setState({title: e.target.value})}/>
@@ -307,10 +309,7 @@ class App extends Component {
                   }}
                 />
                 <Row style={{marginTop: 10}} gutter={[10, 0]}>
-                  <Col span={10}>
-                    <Button style={{width: '100%'}} type="primary" onClick={this.onSaveLocal}>{getI18N('Save_Local')}</Button>
-                  </Col>
-                  <Col span={14}>
+                  <Col span={24}>
                     <Button style={{width: '100%'}} type="primary" onClick={this.onSave}>{getI18N('Save')}</Button>
                   </Col>
                 </Row>

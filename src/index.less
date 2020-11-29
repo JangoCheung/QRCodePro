@@ -3,11 +3,11 @@ html, body {
 }
 
 #app {
-  width: 560px;
+  width: 540px;
   height: 500px;
   position: relative;
   overflow: auto;
-  padding: 0 20px;
+  padding: 0 15px;
 }
 
 .qrcode-wrap {
@@ -27,7 +27,7 @@ html, body {
 .github-icon {
   position: absolute;
   right: 19px;
-  top: 11px;
+  top: 5px;
   z-index: 1000;
   width: 25px;
   height: 25px;
@@ -84,5 +84,23 @@ html, body {
 
   .save-image {
     right: 50px;
+  }
+}
+
+.qrcode-img-wrap {
+  position: relative;
+
+  .download-btn {
+    position: absolute;
+    left: 168px;
+    bottom: 0px;
+    z-index: 100;
+    display: none;
+  }
+
+  &:hover {
+    .download-btn {
+      display: block;
+    }
   }
 }
