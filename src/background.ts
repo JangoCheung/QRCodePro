@@ -50,13 +50,15 @@ class Background {
       contexts: ["link"]
     })
 
-    // chrome.contextMenus.create({
-    //   title: "解析二维码",
-    //   onclick: (e) => {
-    //     e.srcUrl;
-    //   },
-    //   contexts: ["image"]
-    // });
+    chrome.contextMenus.create({
+      title: "解析二维码",
+      onclick: async (e) => {
+        const id = await this.getActiveTabsId();
+
+        this.postMessage(id, 'DECODE_QRCODE', e.srcUrl);
+      },
+      contexts: ["image"]
+    });
   }
 }
 
